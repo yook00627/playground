@@ -1,3 +1,4 @@
+use std::io;
 const MAX_NUMBER: u32 = 100_000_000;
 
 // Just me playing around with Rust
@@ -37,6 +38,31 @@ fn main() {
     } else {
         println!("{} is lower than 3", x);
     }
+
+    let a = [0; 5];
+
+    for el in a.iter() {
+        println!("{}", el);
+    }
+
+    for i in 0..5 {
+        println!("{}", i);
+    }
+
+    let result = loop {
+        let mut word = String::new();
+        println!("type 'exit' if you want to leave");
+        io::stdin()
+            .read_line(&mut word)
+            .expect("failed to read line");
+
+        let word = word.trim().to_string();
+        println!("you have typed {}", word);
+        if word == "exit" {
+            break word;
+        }
+    };
+    println!("You have {}", result);
 }
 
 fn another_function() {
