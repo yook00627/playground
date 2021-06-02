@@ -13,12 +13,14 @@ impl User {
     }
 }
 
+#[derive(Debug)]
 struct Rectangle {
     width: u64,
     height: u64,
 }
 
 impl Rectangle {
+    //methods
     fn get_area(&self) -> u64 {
         self.width * self.height
     }
@@ -29,6 +31,14 @@ impl Rectangle {
 
     fn can_hold(&self, other: &Rectangle) -> bool {
         self.width > other.width && self.height > other.height
+    }
+
+    //associated functions
+    fn square(size: u64) -> Rectangle {
+        Rectangle {
+            width: size,
+            height: size,
+        }
     }
 }
 
@@ -78,6 +88,8 @@ fn main() {
     println!("Area: {}", rect1.get_area());
     rect1.increase_width();
     println!("Area: {}", rect1.get_area());
+
+    println!("Square: {:#?}", Rectangle::square(25));
 
     let rect1 = Rectangle {
         width: 30,
